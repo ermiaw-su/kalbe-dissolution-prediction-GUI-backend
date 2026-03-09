@@ -10,4 +10,8 @@ router.post(
     datasetController.uploadDataset
 )
 
+router.get("/", datasetController.getDatasets)
+router.get("/:id", datasetController.getDatasetById)
+router.delete("/:id", datasetController.deleteDataset)
+
 module.exports = router

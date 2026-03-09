@@ -7,6 +7,7 @@ const express = require("express");
 const connectDB = require("./src/config/db");
 
 const datasetRoutes = require("./src/routes/datasetRoutes")
+const logRoutes = require("./src/routes/logRoutes")
 
 const app = express();
 
@@ -15,6 +16,7 @@ connectDB()
 app.use(express.json())
 
 app.use("/api/datasets", datasetRoutes)
+app.use("/api/logs", logRoutes)
 
 app.get("/", (req, res) => {
     res.send("Kalbe Dissolution Rate API Running...")
