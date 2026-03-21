@@ -10,7 +10,7 @@ router.post(
     verifyToken,
     upload.single("dataset"),
     datasetController.uploadDataset
-)
+);
 
 router.get("/", verifyToken, datasetController.getDatasets)
 router.get("/:id", verifyToken, datasetController.getDatasetById)
