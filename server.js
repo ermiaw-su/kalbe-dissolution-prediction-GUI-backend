@@ -25,6 +25,7 @@ async function seedAdmin() {
         const password = await bcrypt.hash("kalbe123", 10)
 
         await User.create({
+            userId: "U001",
             username: "adminKalbe",
             password: password,
             role: "administrator",

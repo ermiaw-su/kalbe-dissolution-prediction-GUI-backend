@@ -49,6 +49,16 @@ exports.predict = async (req, res) => {
             });
         }
 
+        if (!req.file.originalname.toLowerCase().endsWith(".sam")) {
+            if (fs.existsSync(req.file.path)) {
+                fs.unlinkSync(req.file.path);
+            }
+
+            return res.status(400).json({
+                message: "Only .sam files allowed",
+            });
+        }
+
         if (!req.body.dataSetId) {
             return res.status(400).json({
                 message: "Data set id is required",

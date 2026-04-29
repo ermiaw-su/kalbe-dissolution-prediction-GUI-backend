@@ -15,6 +15,15 @@ exports.uploadDataset = async (req, res) => {
                 message: "No file uploaded",
             });
         }
+        if (!file.originalname.toLowerCase().endsWith(".sam")) {
+            if (fs.existsSync(file.path)) {
+                fs.unlinkSync(file.path); 
+            }
+
+            return res.status(400).json({
+                message: "Only .sam files allowed",
+            });
+        }
 
         // Validate file
         let data;
